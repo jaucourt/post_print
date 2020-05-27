@@ -1,4 +1,5 @@
 var http = require('http');
+var https = require('https');
 var querystring = require('querystring');
 
 function processPost(request, response, callback) {
@@ -25,7 +26,7 @@ function processPost(request, response, callback) {
         response.end();
     }
 }
-http.createServer(function(request, response) {
+function handleRequest (request, response) {
     if(request.method == 'POST') {
         processPost(request, response, function() {
             console.log("POST received:", request.post);
@@ -39,4 +40,6 @@ http.createServer(function(request, response) {
         response.end();
     }
 
-}).listen(3000);
+}
+http.createServer(handleRequest).listen(3000);
+https.createServer(handleRequest).listen(3443);
