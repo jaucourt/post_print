@@ -9,3 +9,5 @@ $ npm install
 $ npm start
 ```
 after checkout.
+
+Added a new feature
